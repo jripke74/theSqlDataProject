@@ -1,4 +1,4 @@
-INSERT INTO city_tbl (city_id, city_name, state_id, country_id)
+INSERT INTO places_db.city_tbl (city_id, city_name, state_id, country_id)
 VALUES (1, 'Aberdeen', 46, 1),
        (2, 'Airway Heights', 46, 1),
        (3, 'Algona', 46, 1),
