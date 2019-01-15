@@ -11,12 +11,12 @@ CREATE TABLE continent_tbl (
 );
 
 CREATE TABLE country_tbl (
-    country_iso_code int NOT NULL,
-    country_name varchar(13),
-    country_cordinates varchar(30),
+    country_iso_alpha_3_code varchar(3) NOT NULL,
+    country_name varchar(45),
+    country_cordinates varchar(20),
     country_area varchar(10),
     continent_name varchar(255),
-    PRIMARY KEY (country_iso_code),
+    PRIMARY KEY (country_iso_alpha_3_code),
     CONSTRAINT FK_continent_tbl FOREIGN KEY (continent_name)
     REFERENCES continent_tbl(continent_name)
 );
