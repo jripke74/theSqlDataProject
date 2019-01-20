@@ -2,6 +2,11 @@ CREATE DATABASE places_db;
 
 USE places_db;
 
+CREATE TABLE planet_tbl (
+  planet_id int(1),
+  planet_name varchar(7)
+);
+
 CREATE TABLE continent_tbl (
     continent_name varchar(13) NOT NULL,
     continent_area int,
