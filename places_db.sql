@@ -2,28 +2,31 @@ CREATE DATABASE places_db;
 
 USE places_db;
 
-CREATE TABLE planet_tbl (
-  planet_id int(1),
+CREATE TABLE IF NOT EXISTS planet_tbl (
+  planet_id int(1) NOT NULL,
   planet_name varchar(7)
 );
 
-CREATE TABLE continent_tbl (
-    continent_name varchar(13) NOT NULL,
-    continent_area int,
-    continent_contries int,
-    continent_coordinates varchar(40),
-    PRIMARY KEY (continent_name)
+CREATE TABLE IF NOT EXISTS continent_tbl (
+  continent_id int(1) NOT NULL,
+  planet_id int(1),
+  continent_name varchar(13) NOT NULL,
+  continent_coordinates varchar(40),
+  PRIMARY KEY (continent_id),
+  CONSTRAINT FK_planet_tbl FOREIGN KEY (planet_id)
+  REFERENCES planet_tbl(planet_id)
 );
 
 CREATE TABLE country_tbl (
-    country_iso_alpha_3_code varchar(3) NOT NULL,
-    country_name varchar(45),
-    country_cordinates varchar(20),
-    country_area varchar(10),
-    continent_name varchar(255),
-    PRIMARY KEY (country_iso_alpha_3_code),
-    CONSTRAINT FK_continent_tbl FOREIGN KEY (continent_name)
-    REFERENCES continent_tbl(continent_name)
+  country_id int(3) NOT NULL,
+  continent_id int(1),
+  country_iso_alpha_3_code varchar(3) NOT NULL,
+  country_name varchar(45),
+  country_cordinates varchar(20),
+  country_area varchar(10),
+  PRIMARY KEY (country_id),
+  CONSTRAINT FK_continent_tbl FOREIGN KEY (continent_id)
+  REFERENCES continent_tbl(continent_id)
 );
 
 CREATE TABLE state_provence_tbl (
